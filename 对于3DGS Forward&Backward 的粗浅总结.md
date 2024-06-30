@@ -11,38 +11,17 @@
   $$V(xyz)= [x-\bar{x}, y-\bar{y}, z-\bar{z}]^T$$
   $$V(xyz) = R^{-1}V(xyz_{new}) $$
   椭球公式变成：
-  $$\frac{(R^{-1}[0,:] \cdot V(xyz_{new}) )^2}{a^2} + \frac{(R^{-1}[1,:] \cdot V(xyz_{new}) )^2}{b^2} + \frac{(R^{-1}[2,:] \cdot V(xyz_{new}) )^2}{c^2} = 1 \\$$
+  $$\frac{(R^{-1}[0,:] \cdot V(xyz_{new}) )^2}{a^2} + \frac{(R^{-1}[1,:] \cdot V(xyz_{new}) )^2}{b^2} + \frac{(R^{-1}[2,:] \cdot V(xyz_{new}) )^2}{c^2} = 1$$
 
   $$(\frac{R^{-1}[0,0]^2}{a^2} + \frac{R^{-1}[1,0]^2}{b^2} + \frac{R^{-1}[2,0]^2}{c^2}) (x_{new} - \bar{x})^2 + \\(\frac{R^{-1}[0,1]^2}{a^2} + \frac{R^{-1}[1,1]^2}{b^2} + \frac{R^{-1}[2,1]^2}{c^2}) (y_{new} - \bar{y})^2 + \\(\frac{R^{-1}[0,2]^2}{a^2} + \frac{R^{-1}[1,2]^2}{b^2} + \frac{R^{-1}[2,2]^2}{c^2}) (z_{new} - \bar{z})^2 + \\(...) (x_{new} - \bar{x})(y_{new} - \bar{y}) + \\ (...) (y_{new} - \bar{y})(z_{new} - \bar{z}) + \\(...)(x_{new} - \bar{x})(z_{new} - \bar{z}) = 1$$
 
-  $$  \Rightarrow$$
-  $$\begin{bmatrix}
-  x_{new}-\bar{x} &  y_{new}-\bar{y} &  z_{new}-\bar{z}
-  \end{bmatrix} R^{-1} \begin{bmatrix}
-  \frac{1}{a^2} &  & \\
-    &  \frac{1}{b^2} & \\
-    &  &  \frac{1}{c^2}
-  \end{bmatrix} (R^{-1})^T \begin{bmatrix}
-    x_{new}-\bar{x} \\ y_{new}-\bar{y}
-  \\ z_{new}-\bar{z}
-  \end{bmatrix} = 1$$
+  $$\Rightarrow$$
+
+  $$\begin{bmatrix} x_{new}-\bar{x} &  y_{new}-\bar{y} &  z_{new}-\bar{z} \end{bmatrix} R^{-1} \begin{bmatrix} \frac{1}{a^2} &  & \\ &  \frac{1}{b^2} & \\ &  &  \frac{1}{c^2} \end{bmatrix} (R^{-1})^T \begin{bmatrix} x_{new}-\bar{x} \\ y_{new}-\bar{y} \\ z_{new}-\bar{z} \end{bmatrix} =1$$
+  
   这个新的矩阵就是$(\Sigma_{3\times 3})^{-1}$, 特征值的定义是: $|X - \lambda I| = 0 $
   $$ 
-  | R^{-1} \begin{bmatrix}
-  \frac{1}{a^2} &  & \\
-    &  \frac{1}{b^2} & \\
-    &  &  \frac{1}{c^2}
-  \end{bmatrix} (R^{-1})^T - \lambda I | = 0 \\
-  |\begin{bmatrix}
-  \frac{1}{a^2} &  & \\
-    &  \frac{1}{b^2} & \\
-    &  &  \frac{1}{c^2}
-  \end{bmatrix}R - \lambda R| = 0 \\
-  \Rightarrow \lambda = \begin{bmatrix}
-  \frac{1}{a^2} &  & \\
-    &  \frac{1}{b^2} & \\
-    &  &  \frac{1}{c^2}
-  \end{bmatrix}$$
+  | R^{-1} \begin{bmatrix} \frac{1}{a^2} &  & \\ &  \frac{1}{b^2} & \\ &  &  \frac{1}{c^2} \end{bmatrix} (R^{-1})^T - \lambda I | = 0 \\ |\begin{bmatrix} \frac{1}{a^2} &  & \\ &  \frac{1}{b^2} & \\ &  &  \frac{1}{c^2} \end{bmatrix}R - \lambda R| = 0 \\ \Rightarrow \lambda = \begin{bmatrix} \frac{1}{a^2} &  & \\ &  \frac{1}{b^2} & \\ &  &  \frac{1}{c^2} \end{bmatrix}$$
   二阶椭圆方程也同理，因此在求出2D投影的协方差矩阵之后要求逆然后特征值是两个半轴的长度；
 
 
